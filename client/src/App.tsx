@@ -328,17 +328,17 @@
 
 // export default App;
 
-import React, { useState, useRef } from 'react';
-import { Upload, TrendingUp, TrendingDown, BookOpen, AlertTriangle, Activity, Calendar, ExternalLink, BarChart3, PieChart, DollarSign, Users, Target, Zap, Download, RefreshCw, Search, Volume2, Square } from 'lucide-react';
+import { useState, useRef } from 'react';
+import { Upload, TrendingUp, TrendingDown, BookOpen, AlertTriangle, Activity, Calendar, DollarSign, Users, Target, Zap, Volume2, Square } from 'lucide-react';
 import './App.css';
 
-interface MetricCard {
-  label: string;
-  value: string;
-  change?: number;
-  icon: any;
-  color: string;
-}
+// interface MetricCard {
+//   label: string;
+//   value: string;
+//   change?: number;
+//   icon: any;
+//   color: string;
+// }
 
 interface AnalysisData {
   companyName: string;
@@ -381,7 +381,7 @@ function App() {
     formData.append('pdf', file);
 
     try {
-      const res = await fetch('http://localhost:5000/analyze', {
+      const res = await fetch('https://stocklenss.onrender.com/analyze', {
         method: 'POST',
         body: formData,
       });
@@ -403,7 +403,7 @@ function App() {
 
   const scoreColor = data ? getScoreColor(data.bullishnessScore) : null;
 
-  const speakText = (text) => {
+  const speakText = (text: string) => {
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
     
